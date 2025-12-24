@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday My Love</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(
+          135deg,
+          #0c0c0c 0%,
+          #1a0a2e 50%,
+          #16082e 100%
+        );
+        overflow-x: hidden;
+        overflow-y: auto;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+      }
+
+      /* Aurora Background Effect */
+      .aurora {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            ellipse at 20% 20%,
+            rgba(255, 0, 128, 0.12) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 80% 30%,
+            rgba(120, 0, 255, 0.12) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 50% 80%,
+            rgba(255, 100, 150, 0.08) 0%,
+            transparent 50%
+          );
+        animation: auroraMove 10s ease-in-out infinite;
+        z-index: 0;
+      }
+
+      @keyframes auroraMove {
+        0%,
+        100% {
+          transform: scale(1) rotate(0deg);
+        }
+        50% {
+          transform: scale(1.1) rotate(3deg);
+        }
+      }
+
+      /* Stars Background */
+      .stars {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .star {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: white;
+        border-radius: 50%;
+        animation: twinkle 3s infinite;
+        box-shadow: 0 0 6px #fff, 0 0 12px rgba(255, 255, 255, 0.5);
+      }
+
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0.3;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.5);
+        }
+      }
+
+      /* Shooting Stars */
+      .shooting-star {
+        position: absolute;
+        width: 80px;
+        height: 2px;
+        background: linear-gradient(90deg, #fff, transparent);
+        animation: shoot 4s linear infinite;
+        opacity: 0;
+      }
+
+      @keyframes shoot {
+        0% {
+          transform: translateX(0) translateY(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(-400px) translateY(250px);
+          opacity: 0;
+        }
+      }
+
+      /* Main Container */
+      .container {
+        z-index: 10;
+        max-width: min(95%, 750px);
+        width: 100%;
+        padding: clamp(10px, 3vw, 20px);
+      }
+
+      /* Title */
+      .title {
+        font-family: "Dancing Script", cursive;
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        color: #feca57;
+        text-shadow: 0 0 20px rgba(254, 202, 87, 0.5);
+        margin-bottom: 30px;
+        animation: fadeInDown 1s ease both, glow 3s ease-in-out infinite;
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          text-shadow: 0 0 20px rgba(254, 202, 87, 0.5);
+        }
+        50% {
+          text-shadow: 0 0 40px rgba(254, 202, 87, 0.8),
+            0 0 60px rgba(255, 159, 243, 0.4);
+        }
+      }
+
+      /* Glassmorphism Message Box */
+      .msg-box {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: clamp(15px, 4vw, 25px);
+        padding: clamp(20px, 5vw, 40px) clamp(15px, 4vw, 50px);
+        margin: 20px auto;
+        box-shadow: 0 8px 32px rgba(255, 107, 107, 0.15),
+          0 0 60px rgba(255, 100, 180, 0.1),
+          inset 0 0 30px rgba(255, 255, 255, 0.02);
+        max-width: min(90%, 600px);
+        position: relative;
+        animation: fadeInUp 1s ease 0.3s both, boxGlow 4s ease-in-out infinite;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes boxGlow {
+        0%,
+        100% {
+          box-shadow: 0 8px 32px rgba(255, 107, 107, 0.15),
+            0 0 60px rgba(255, 100, 180, 0.1);
+        }
+        50% {
+          box-shadow: 0 8px 50px rgba(255, 107, 107, 0.25),
+            0 0 100px rgba(255, 100, 180, 0.2);
+        }
+      }
+
+      /* Shine Effect on Card */
+      .msg-box::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 255, 255, 0.03),
+          transparent
+        );
+        animation: shine 5s linear infinite;
+        pointer-events: none;
+      }
+
+      @keyframes shine {
+        0% {
+          transform: translateX(-100%) rotate(45deg);
+        }
+        100% {
+          transform: translateX(100%) rotate(45deg);
+        }
+      }
+
+      .msg-box p {
+        font-size: clamp(0.9rem, 3vw, 1.2rem);
+        line-height: 2;
+        color: #fff;
+        position: relative;
+        z-index: 1;
+      }
+
+      .msg-box .line {
+        display: block;
+        margin: clamp(6px, 2vw, 12px) 0;
+        opacity: 0;
+        animation: fadeInLine 0.8s ease forwards;
+        padding: clamp(4px, 1.5vw, 8px) clamp(8px, 2vw, 15px);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        color: #fff;
+        text-shadow: 0 0 10px rgba(255, 159, 243, 0.3);
+      }
+
+      .msg-box .line:hover {
+        background: rgba(255, 107, 107, 0.1);
+        transform: translateX(5px);
+      }
+
+      .msg-box .line:nth-child(1) {
+        animation-delay: 0.5s;
+      }
+      .msg-box .line:nth-child(2) {
+        animation-delay: 1s;
+      }
+      .msg-box .line:nth-child(3) {
+        animation-delay: 1.5s;
+      }
+      .msg-box .line:nth-child(4) {
+        animation-delay: 2s;
+      }
+      .msg-box .line:nth-child(5) {
+        animation-delay: 2.5s;
+      }
+      .msg-box .line:nth-child(6) {
+        animation-delay: 3s;
+      }
+
+      @keyframes fadeInLine {
+        from {
+          opacity: 0;
+          transform: translateY(20px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      /* Love Quote */
+      .love-quote {
+        margin-top: clamp(15px, 4vw, 30px);
+        font-family: "Dancing Script", cursive;
+        font-size: clamp(1rem, 3.5vw, 1.3rem);
+        color: #ff9ff3;
+        text-shadow: 0 0 15px rgba(255, 159, 243, 0.5);
+        animation: fadeInUp 1s ease 3.5s both;
+        padding: 0 10px;
+      }
+
+      /* Back Button */
+      .back-btn {
+        margin-top: clamp(20px, 5vw, 35px);
+        padding: clamp(10px, 2.5vw, 15px) clamp(25px, 6vw, 45px);
+        font-size: clamp(0.9rem, 3vw, 1.125rem);
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        background: linear-gradient(45deg, #ff6b6b, #ff9ff3, #feca57);
+        background-size: 200% 200%;
+        animation: gradient 3s ease infinite, fadeInUp 1s ease 4s both;
+        border: none;
+        border-radius: 50px;
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 4px 25px rgba(255, 107, 107, 0.4);
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+      }
+
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .back-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        animation: btnShine 2s linear infinite;
+      }
+
+      @keyframes btnShine {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      .back-btn:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 10px 35px rgba(255, 107, 107, 0.5);
+      }
+
+      /* Floating Hearts */
+      .heart {
+        position: fixed;
+        animation: floatUp 7s linear forwards;
+        pointer-events: none;
+        z-index: 5;
+        filter: drop-shadow(0 0 8px rgba(255, 100, 180, 0.5));
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translateY(100vh) rotate(0deg) scale(0.5);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100px) rotate(720deg) scale(1.3);
+          opacity: 0;
+        }
+      }
+
+      /* Sparkle on Mouse */
+      .sparkle {
+        position: fixed;
+        pointer-events: none;
+        font-size: 20px;
+        animation: sparkleAnim 1.2s ease forwards;
+        z-index: 50;
+      }
+
+      @keyframes sparkleAnim {
+        0% {
+          transform: scale(0) rotate(0deg);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.3) rotate(180deg);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(0) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      /* Responsive - Tablet */
+      @media (max-width: 768px) {
+        body {
+          padding: 15px;
+        }
+
+        .msg-box {
+          padding: 25px 20px;
+          margin: 15px auto;
+        }
+
+        .msg-box .line:hover {
+          transform: none;
+          background: transparent;
+        }
+      }
+
+      /* Responsive - Mobile */
+      @media (max-width: 500px) {
+        body {
+          padding: 10px;
+        }
+
+        .msg-box {
+          padding: 20px 15px;
+          margin: 10px auto;
+        }
+
+        .title {
+          font-size: 1.2rem;
+          margin-bottom: 15px;
+        }
+
+        .msg-box p {
+          font-size: 0.95rem;
+          line-height: 1.8;
+        }
+
+        .hero-title {
+          font-size: clamp(2rem, 10vw, 3rem);
+          margin-bottom: 10px;
+        }
+
+        .love-quote {
+          margin-top: 15px;
+          line-height: 1.4;
+        }
+
+        .back-btn {
+          margin-top: 20px;
+          padding: 10px 25px;
+        }
+      }
+
+      /* Very small screens */
+      @media (max-width: 360px) {
+        .msg-box {
+          padding: 15px 12px;
+        }
+
+        .msg-box .line {
+          margin: 5px 0;
+          padding: 3px 6px;
+        }
+
+        .hero-title {
+          font-size: 1.8rem;
+        }
+
+        .back-btn {
+          padding: 8px 20px;
+          font-size: 0.85rem;
+        }
+      }
+
+      /* Hero Title Style */
+      .hero-title {
+        font-family: "Great Vibes", cursive;
+        font-size: clamp(3rem, 8vw, 5rem);
+        background: linear-gradient(
+          45deg,
+          #ff6b6b,
+          #feca57,
+          #ff9ff3,
+          #54a0ff,
+          #ff6b6b
+        );
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradient 4s ease infinite, floatTitle 3s ease-in-out infinite;
+        filter: drop-shadow(0 0 30px rgba(255, 107, 107, 0.5));
+        z-index: 10;
+        position: relative;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      @keyframes floatTitle {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="aurora"></div>
+    <div class="stars" id="stars"></div>
+    <div class="hero-title">Happy Birthday Jaan! 💖</div>
+
+    <div class="container">
+      <p class="title">Aaj tera din hai, aaj tera birthday hai!</p>
+
+      <div class="msg-box">
+        <p>
+          <span class="line"
+            >Tere special din pe main tujhe yaad dilana chahta/chahti
+            hoon...</span
+          >
+          <span class="line">Ke tu mere dil ki dharkan hai!</span>
+          <span class="line">Aur meri smile ki wajah bhi tu hi hai!</span>
+          <span class="line">Thank you for being wonderfully you.</span>
+          <span class="line">Chaand tak tujhe pyaar karta/karti hoon...</span>
+          <span class="line">Love you endlessly, mera baccha! 💖</span>
+        </p>
+      </div>
+
+      <p class="love-quote">
+        "Tere bina ye dil, ye zindagi... sab adhura hai!"
+      </p>
+
+      <a href="index.html" class="back-btn">Wapas Jaao</a>
+    </div>
+
+    <script>
+      // Create Stars
+      function createStars() {
+        const starsContainer = document.getElementById("stars");
+        for (let i = 0; i < 120; i++) {
+          const star = document.createElement("div");
+          star.className = "star";
+          star.style.left = Math.random() * 100 + "%";
+          star.style.top = Math.random() * 100 + "%";
+          star.style.animationDelay = Math.random() * 3 + "s";
+          star.style.animationDuration = 2 + Math.random() * 2 + "s";
+          star.style.width = 1 + Math.random() * 2 + "px";
+          star.style.height = star.style.width;
+          starsContainer.appendChild(star);
+        }
+
+        // Shooting Stars
+        for (let i = 0; i < 4; i++) {
+          const shootingStar = document.createElement("div");
+          shootingStar.className = "shooting-star";
+          shootingStar.style.top = Math.random() * 40 + "%";
+          shootingStar.style.right = "-80px";
+          shootingStar.style.animationDelay = i * 5 + Math.random() * 3 + "s";
+          starsContainer.appendChild(shootingStar);
+        }
+      }
+      createStars();
+
+      // Floating Hearts
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        const hearts = ["❤️", "💖", "💕", "💗", "💓", "✨", "🌟", "💫"];
+        heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+        heart.style.fontSize = 18 + Math.random() * 20 + "px";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = 6 + Math.random() * 3 + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 9000);
+      }
+      setInterval(createHeart, 600);
+
+      // Sparkle on Mouse Move
+      document.addEventListener("mousemove", (e) => {
+        if (Math.random() > 0.88) {
+          const sparkle = document.createElement("div");
+          sparkle.className = "sparkle";
+          const sparkles = ["✨", "⭐", "💫", "🌟", "💖"];
+          sparkle.innerText =
+            sparkles[Math.floor(Math.random() * sparkles.length)];
+          sparkle.style.left = e.clientX + "px";
+          sparkle.style.top = e.clientY + "px";
+          document.body.appendChild(sparkle);
+          setTimeout(() => sparkle.remove(), 1200);
+        }
+      });
+    </script>
+  </body>
+</html>
